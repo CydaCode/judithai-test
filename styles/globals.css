@@ -1,0 +1,75 @@
+:root {
+  --color-bg:  #e5e5f7;
+  --color-bg-variant: #cdcde7;
+  --color-primary: #2a3deb;
+  --color-primary-varient: #4346da;
+  --color-black: #000000;
+  --color-grey: #87898b;
+  --color-dark: #181717;
+  --color-white: #ffffff;
+
+  --transition: all 400ms ease;
+
+  --container-width-lg: 75%;
+  --container-width-md: 86%;
+  --container-width-sm: 90%;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  background-color: var(--color-bg);
+}
+
+/* Form input styling */
+.form__details {
+  width: 100%;
+}
+.form__area{
+  margin-bottom: 15px;
+  width: 100%;
+}
+.form__area1{
+  margin-bottom: 15px;
+  width: fit-content;
+}
+
+.form__area label {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 18px;
+  color: var(--label-color);
+  margin-bottom: 10px;
+}
+.form__area input,
+.form__area select,
+.form__area textarea {
+  width: 100%;
+  height: 45px;
+  border-radius: 8px;
+  padding-top: 15px;
+  font-weight: 400;
+  background-color: transparent;
+  font-size: 14px;
+  line-height: 18px;
+  color: var(--placeholder-text);
+  border: 1px solid var(--input-border);
+  outline: none;
+  
+ 
+}
+
+.form__area1 input,
+.form__area1 select,
+.form__area1 textarea {
+  width: fit-content;
+}
+.form__area input:focus,
+.form__area select:focus,
+textarea:focus {
+  box-shadow: none;
+  outline: none;
+}
