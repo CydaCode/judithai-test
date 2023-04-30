@@ -1,28 +1,39 @@
 import React from "react";
 import styles from "../../styles/Home/Card.module.css";
+import { ICards } from "@/pages";
+import { Search404 } from "@/pages/404";
+
+//
 
 
-// 
-interface ICards {
-    id: number;
-    title: string;
-    completed: true | false ;
-  }
-
-const Cards = ({data}: {data: ICards}, {filteredProducts}: any) => {
+const Cards = ({filteredData}: {filteredData: ICards[]}) => {
   return (
-    <div className={styles.container}>
-      
-        return (
-          <div className={styles.wrapper} key={data.id}>
-            <div className={styles.width}>
-              <p><span>Title:</span> {data.title}</p>
-              <p><span>Status:</span> {data.completed}</p>
-            </div>
-          </div>
-        );
- 
-    </div>
+    <>
+      {/* card component */}
+      {filteredData.length > 0 ? (
+        <div className={styles.card_container}>
+          {filteredData.map((data) => {
+            return (
+              <div className={styles.card_wrapper} key={data.id}>
+                <div className={styles.card_width}>
+                  <p className={styles.card_para}>
+                    {data.name}
+                  </p>
+                  <p>
+                    <span>Username:</span> {data.username}
+                  </p>
+                  <p>
+                    <span>Website:</span> {data.website}
+                  </p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      ) : (
+        <Search404 />
+      )}
+    </>
   );
 };
 

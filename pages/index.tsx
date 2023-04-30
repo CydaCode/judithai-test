@@ -5,8 +5,11 @@ import { GetStaticProps } from "next";
 import { useEffect, useState } from "react";
 import { Input, Image } from "@chakra-ui/react";
 import axios from "axios";
+import SearchSection from "@/components/Home/SearchSection";
+import Cards from "@/components/Home/Cards";
+import Network404 from "./404";
 
-interface ICards {
+export interface ICards {
   id: number;
   name: string;
   username: string;
@@ -75,69 +78,16 @@ export default function Home({ details }: Props) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {error ? (
-        <div className={styles.error}>
-          Oops, something went wrong!!! Check your Network
-        </div>
+        <Network404 />
       ) : (
         <main className={styles.container}>
           <div className={styles.wrapper}>
-            {/* search component */}
-            <div className={styles.search_container}>
-              <h1 className={styles.search_heading_wrapper}>
-                Bio<span>Info</span>
-              </h1>
-              <div className={styles.search_containers}>
-                <Image src="/home/search-icon.svg" alt="search" />
-                <div className="form__area">
-                  <Input
-                    type="text"
-                    name="search"
-                    placeholder="Search..."
-                    value={searchTerm}
-                    onChange={handleSearch}
-                  />
-                </div>
-              </div>
-              <div className={styles.filter_containers}>
-                <div className={styles.filter_wrappers}>
-                  <p onClick={() => setFilter("all")}>All</p>
-                </div>
-                <div className={styles.filter_wrappers}>
-                  <p onClick={() => setFilter("info")}>Info</p>
-                </div>
-                <div className={styles.filter_wrappers}>
-                  <p onClick={() => setFilter("org")}>Org</p>
-                </div>
-                <div className={styles.filter_wrappers}>
-                  <p onClick={() => setFilter("com")}>Com</p>
-                </div>
-              </div>
-            </div>
-            {/* card component */}
-            {filteredData.length > 0  ? 
-             (
-              <div className={styles.card_container}>
-                {filteredData.map((data) => {
-                  return (
-                    <div className={styles.card_wrapper} key={data.id}>
-                      <div className={styles.card_width}>
-                        <p>
-                          <span>Name:</span> {data.name}
-                        </p>
-                        <p>
-                          <span>Username:</span> {data.username}
-                        </p>
-                        <p>
-                          <span>Website:</span> {data.website}
-                        </p>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            ) :
-                (<p className={styles.error}>No Result  found</p>)
-          }
+            <SearchSection 
+                setFilter={setFilter} 
+                handleSearch={handleSearch} 
+                searchTerm={searchTerm}
+                />
+            <Cards filteredData={filteredData}/>
           </div>
         </main>
       )}
