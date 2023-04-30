@@ -7,7 +7,7 @@ export default function Network404() {
       <div className={styles.container_img}>
         <Image src="/home/sad.jpg" alt="sad face" />
       </div>
-      <h1>OPPSSSS!! What a network</h1>
+      <h2>OPPSSSS!! What a network</h2>
       <p>Please  check your network and try again</p>
     </div>
   );
@@ -20,7 +20,7 @@ export const Search404 =()=> {
         <div className={styles.search_container_img}>
           <Image src="/home/confused.jpg" alt="sad face" />
         </div>
-        <h1>I cant find what you are  looking for!!!</h1>
+        <p>I cant find what you are  looking for!!!</p>
       </div>
     );
   }
